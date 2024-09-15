@@ -1,0 +1,22 @@
+version: "3"
+services:
+    crudapp:
+        container_name: crud_app
+        build:
+            context: . #if Docker file in another location than we need to specify the path
+            # dockerfile: Dockerfile
+        image: sunnyharsh/crud-app:01
+        ports:
+            # left side port number is coming from docker file
+            - "3000:3000"
+        volumes:
+            - .:/myapp
+            - /myapp/node_modules
+# run this file for first time
+# (docker compose up -d)
+# if you changing some thing in component and page than need to fire
+# (docker compose build OR docker compose build --no-cache OR docker compose build <service-name> OR docker compose up --build -d )
+# (docker compose up -d)
+
+# Host Port): Left side of port on your local machine (the host) where the application will be accessible.
+# (Container Port): Right side of port inside the Docker container that the application is listening on.
